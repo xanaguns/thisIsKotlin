@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         
         binding.btnSay.setOnClickListener{
-            binding.textSay.setText("Hello Kotlin!!!")
+            binding.textSay.text = "Hello Kotlin!!!"
         }
     }
 }

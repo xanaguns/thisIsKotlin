@@ -3,6 +3,7 @@ package net.flow9.scopefunction
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import net.flow9.scopefunction.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -12,16 +13,23 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        checkApply()
+        checkRun()
+        checkLet()
+        checkAlso()
+        checkWith()
     }
 
     fun checkApply() {
         val newStudent = MyStudent()
-        newStudent.apply {
+        val resultApply = newStudent.apply {
             age = 20
             name = "Tame"
             address = "ChungName Sejong"
         }
         println("새 학생 이름은 ${newStudent.name} 입니다.")
+        Log.d("Scope","resultApply : $resultApply")
     }
 
     fun checkRun() {
@@ -42,20 +50,23 @@ class MainActivity : AppCompatActivity() {
 
     fun checkLet() {
         val checkAge:Int? = 18
-        checkAge?.let { number ->
+        val resultLet = checkAge?.let { number ->
             if(number < 19) {
                 println("You are under age")
             }
+            number
         }
+        Log.d("Scope","resultLet : $resultLet")
     }
 
     fun checkAlso() {
         val dayOffList = mutableListOf(11,12,13)
-        dayOffList.also { dayOff ->
+        val resultAlso = dayOffList.also { dayOff ->
             dayOff.add(14)
             dayOff.add(15)
             println("나의 휴일은 ${dayOff.count()}일 입니다")
         }
+        Log.d("Scope","resultAlso : $resultAlso")
     }
 
     fun checkWith() {
@@ -67,8 +78,8 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-class MyStudent {
-    var age = 21
-    var name = "Heath Ledger"
-    var address = "Parkway CA 94043"
-}
+data class MyStudent (
+    var age : Int = 21,
+    var name : String = "Heath Ledger",
+    var address : String = "Parkway CA 94043"
+)

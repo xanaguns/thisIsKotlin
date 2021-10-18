@@ -14,38 +14,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        checkApply()
-        checkRun()
         checkLet()
+        checkApply()
         checkAlso()
         checkWith()
-    }
-
-    fun checkApply() {
-        val newStudent = MyStudent()
-        val resultApply = newStudent.apply {
-            age = 20
-            name = "Tame"
-            address = "ChungName Sejong"
-        }
-        println("새 학생 이름은 ${newStudent.name} 입니다.")
-        Log.d("Scope","resultApply : $resultApply")
-    }
-
-    fun checkRun() {
-        val students = mutableListOf("Jocker", "Superman","Batman")
-        val studentsCount = students.run {
-            add("Wonderwoman")
-            add("Spiderman")
-            count()
-        }
-        println("우리반 학생은 ${studentsCount}명 입니다")
-
-        students.run {
-            add("Flash")
-            add("Wolverine")
-            println("우리반 학생은 ${count()}명 입니다")
-        }
+        checkRun()
     }
 
     fun checkLet() {
@@ -57,6 +30,17 @@ class MainActivity : AppCompatActivity() {
             number
         }
         Log.d("Scope","resultLet : $resultLet")
+    }
+
+    fun checkApply() {
+        val newStudent = MyStudent()
+        val resultApply = newStudent.apply {
+            age = 20
+            name = "Tame"
+            address = "ChungName Sejong"
+        }
+        println("새 학생 이름은 ${newStudent.name} 입니다.")
+        Log.d("Scope","resultApply : $resultApply")
     }
 
     fun checkAlso() {
@@ -74,6 +58,22 @@ class MainActivity : AppCompatActivity() {
             text = "Hi~"
             textSize = 21f
             setTextColor(Color.BLUE)
+        }
+    }
+
+    fun checkRun() {
+        val students = mutableListOf("Jocker", "Superman","Batman")
+        val studentsCount = students.run {
+            add("Wonderwoman")
+            add("Spiderman")
+            count()
+        }
+        println("우리반 학생은 ${studentsCount}명 입니다")
+
+        students.run {
+            add("Flash")
+            add("Wolverine")
+            println("우리반 학생은 ${count()}명 입니다")
         }
     }
 }
